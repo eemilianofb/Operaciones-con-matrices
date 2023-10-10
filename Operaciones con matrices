@@ -1,0 +1,145 @@
+
+// Operaciones con matrices
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int n1, n2, i, j;
+    int respuestaNumerica;
+
+    srand(time(NULL));
+
+//M1
+    printf("Ingrese el numero de filas de la primera matriz:\n");
+    scanf("%d", &n1);
+
+    printf("Ingrese el numero de columnas de la primera matriz:\n");
+    scanf("%d", &n2);
+
+    int a[n1][n2];
+    printf("Matriz 1 original:\n");
+
+    for (i = 0; i < n1; i++) {
+        for (j = 0; j < n2; j++) {
+            a[i][j] = rand() % 9 + 1;
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+
+//M2
+    printf("Ingrese el numero de filas de la segunda matriz:\n");
+    scanf("%d", &n1);
+
+    printf("Ingrese el numero de columnas de la segunda matriz:\n");
+    scanf("%d", &n2);
+
+    int b[n1][n2];
+    printf("Matriz 2 original:\n");
+
+    for (i = 0; i < n1; i++) {
+        for (j = 0; j < n2; j++) {
+            b[i][j] = rand() % 9 + 1;
+            printf("%d ", b[i][j]);
+        }
+        printf("\n");
+    }
+
+   
+    printf("Que tipo de operacion matematica quieres usar?\n");
+    printf("1 para suma (+)\n");
+    printf("2 para diagonal (/)\n");
+    printf("3 para multiplicacion (*)\n");
+    printf("4 para resta (-)\n");
+    printf("5 para triangulo (v)\n");
+    printf("6 para terminar\n");
+
+    scanf("%d", &respuestaNumerica);
+
+    
+    switch (respuestaNumerica) {
+        case 1:  // Suma
+            printf("Resultado de la suma:\n");
+            if (n1 != n2) {
+                printf("No se pueden sumar matrices de diferentes tamanos.\n");
+            } else {
+                for (i = 0; i < n1; i++) {
+                    for (j = 0; j < n2; j++) {
+                        a[i][j] += b[i][j];
+                        printf("%d ", a[i][j]);
+                    }
+                    printf("\n");
+                }
+            }
+            break;
+        case 2:  // Diagonal
+            
+         if (n1 != n2) {
+        printf("La matriz debe ser cuadrada para calcular la diagonal principal.\n");
+    } else {
+        int sumaDiagonal = 0;
+        printf("Elementos de la diagonal principal:\n");
+        for (i = 0; i < n1; i++) {
+            sumaDiagonal += a[i][i];
+            printf("%d ", a[i][i]);
+        }
+        printf("\n");
+        printf("Suma de la diagonal principal: %d\n", sumaDiagonal);
+    }
+    break;
+            
+        case 3:  // Multiplicacion
+            printf("Resultado de la multiplicacion:\n");
+    if (n2 != n1) {
+        printf("El número de columnas de la primera matriz debe ser igual al número de filas de la segunda matriz para multiplicarlas.\n");
+    } else {
+        int c[n1][n2];
+        for (i = 0; i < n1; i++) {
+            for (j = 0; j < n2; j++) {
+                c[i][j] = 0;
+                for (int k = 0; k < n2; k++) {
+                    c[i][j] += a[i][k] * b[k][j];
+                }
+                printf("%d ", c[i][j]);
+            }
+            printf("\n");
+        }
+    }
+            break;
+        case 4:  // Resta
+          printf("Resultado de la resta:\n");
+    if (n1 != n2) {
+        printf("No se pueden restar matrices de diferentes tamaños.\n");
+    } else {
+        int resultadoResta[n1][n2];
+        for (i = 0; i < n1; i++) {
+            for (j = 0; j < n2; j++) {
+                resultadoResta[i][j] = a[i][j] - b[i][j];
+                printf("%d ", resultadoResta[i][j]);
+            }
+            printf("\n");
+        }
+    }
+    break;
+    
+        case 5:  
+            
+            break;
+        case 6:  // Terminar 
+            return 0;
+        default:
+            printf("Operacion no valida\n");
+            break;
+    }
+    return 0;
+}
+
+
+	
+	
+
+
+	
+	
