@@ -111,7 +111,6 @@ int main() {
         case 4:  // Resta
           printf("Resultado de la resta:\n");
     if (n1 != n2) {
-        printf("No se pueden restar matrices de diferentes tamaños.\n");
     } else {
         int resultadoResta[n1][n2];
         for (i = 0; i < n1; i++) {
